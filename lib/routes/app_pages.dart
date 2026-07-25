@@ -1,4 +1,10 @@
 import 'package:get/get.dart';
+import '../features/collection_details/bindings/collection_details_binding.dart';
+import '../features/collection_details/view/collection_details_view.dart';
+import '../features/collections/bindings/collections_binding.dart';
+import '../features/collections/view/collections_view.dart';
+import '../features/departments/bindings/departments_binding.dart';
+import '../features/departments/view/departments_view.dart';
 import '../features/home/bindings/home_binding.dart';
 import '../features/home/view/home_view.dart';
 import '../features/login/bindings/login_binding.dart';
@@ -40,6 +46,21 @@ class AppPages {
       name: Routes.home,
       page: () => const HomeView(),
       binding: HomeBinding(),
+    ),
+    GetPage(
+      name: Routes.collections,
+      page: () => const CollectionsView(),
+      binding: CollectionsBinding(),
+    ),
+    GetPage(
+      name: Routes.collectionDetails,
+      page: () => const CollectionDetailsView(),
+      binding: CollectionDetailsBinding(),
+    ),
+    GetPage(
+      name: Routes.departments,
+      page: () => const DepartmentsView(),
+      binding: DepartmentsBinding(),
     ),
   ];
 }
