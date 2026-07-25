@@ -8,5 +8,6 @@ abstract class Routes {
   static const home = '/home';
   static const collections = '/collections';
   static const collectionDetails = '/collection-details';
+  static const productDetails = '/product-details';
   static const departments = '/departments';
 }

@@ -153,6 +153,27 @@ class AppStrings {
   static const String colDetailProd4Name = 'Artisan Raffia Tote';
   static const String colDetailProd4Price = '\$160';
 
+  static const String pdpCollectionTag = 'Natural Linens Collection';
+  static const String pdpTitle = 'Raw Silk Tunic';
+  static const String pdpPrice = '\$185.00';
+  static const String pdpDescription = 'A study in organic simplicity. Crafted from ethically sourced sustainable fibers, this tunic breathes with the body. Its raw, unrefined texture offers a soft tactile experience that deepens in character over time.';
+  
+  static const String pdpColorOatmeal = 'Color — Oatmeal';
+  static const String pdpSizeTitle = 'Size';
+  static const String pdpSizeGuide = 'Size Guide';
+  static const List<String> pdpSizes = ['XS', 'S', 'M', 'L', 'XL'];
+  
+  static const String pdpAiSuggestion = 'Our AI suggests size M based on your previous purchases.';
+  
+  static const String pdpAccordion1Title = 'Materials & Care';
+  static const String pdpAccordion1Desc = '100% Raw Hand-loomed Silk. This material is delicate yet durable. We recommend a gentle hand wash in cool water with organic detergent. Dry flat in shade to preserve the natural pigments and fiber strength.';
+  static const String pdpAccordion2Title = 'Sustainability Impact';
+  static const String pdpAccordion2Desc = 'Our raw silk is sourced from a women-led collective in northern Thailand. The dyeing process uses zero synthetic chemicals, relying solely on local mineral-rich clays and plant extracts. Each piece saves approximately 1,200 liters of water compared to traditional manufacturing.';
+  static const String pdpAccordion3Title = 'Shipping & Returns';
+  static const String pdpAccordion3Desc = 'Complimentary carbon-neutral shipping on all orders over \$150. Returns are accepted within 30 days in original condition. We provide a pre-paid compostable return mailer for your convenience.';
+  
+  static const String pdpAdd = 'Add to Bag';
+
   static const String depTitle = 'DEPARTMENTS';
   static const String depIntro = 'Explore our curated collection of ethically sourced essentials, designed for the conscious modern life.';
   

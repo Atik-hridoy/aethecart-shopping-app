@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../core/constants/app_assets.dart';
 import '../../../../core/constants/app_strings.dart';
+import '../../../../routes/app_pages.dart';
 
 class CollectionDetailsGrid extends StatelessWidget {
   const CollectionDetailsGrid({super.key});
@@ -79,8 +81,10 @@ class _ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return GestureDetector(
+      onTap: () => Get.toNamed(Routes.productDetails),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         AspectRatio(
           aspectRatio: 3 / 4,
@@ -145,9 +149,10 @@ class _ProductCard extends StatelessWidget {
             color: Theme.of(context).colorScheme.onSurfaceVariant,
             fontSize: 14,
             letterSpacing: 0.5,
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

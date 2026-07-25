@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import '../features/product_details/bindings/product_details_binding.dart';
+import '../features/product_details/view/product_details_view.dart';
 import '../features/collection_details/bindings/collection_details_binding.dart';
 import '../features/collection_details/view/collection_details_view.dart';
 import '../features/collections/bindings/collections_binding.dart';
@@ -56,6 +58,11 @@ class AppPages {
       name: Routes.collectionDetails,
       page: () => const CollectionDetailsView(),
       binding: CollectionDetailsBinding(),
+    ),
+    GetPage(
+      name: Routes.productDetails,
+      page: () => const ProductDetailsView(),
+      binding: ProductDetailsBinding(),
     ),
     GetPage(
       name: Routes.departments,
