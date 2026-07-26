@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../controller/home_controller.dart';
+
+import '../../../core/widgets/draggable_ai_button.dart';
 import '../../ai_chat/view/ai_chat_view.dart';
 import '../../explore/view/explore_view.dart';
 import '../../profile/view/profile_view.dart';
+import '../controller/home_controller.dart';
 import '../widget/home_app_bar.dart';
 import '../widget/home_bottom_nav.dart';
 import '../widget/home_tab.dart';
@@ -35,6 +37,8 @@ class HomeView extends GetView<HomeController> {
               right: 0,
               child: HomeBottomNav(),
             ),
+            // Moveable Floating AI Assistant Button
+            const DraggableAiButton(),
           ],
         ),
       );

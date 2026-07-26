@@ -19,4 +19,5 @@ abstract class Routes {
   static const orderHistory = '/order-history';
   static const privacySettings = '/privacy-settings';
   static const securityPrivacy = '/security-privacy';
+  static const notification = '/notification';
 }
