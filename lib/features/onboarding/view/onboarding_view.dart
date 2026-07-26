@@ -112,26 +112,34 @@ class OnboardingView extends GetView<OnboardingController> {
                       const SizedBox(height: 32),
                       
                       // Continue Button
-                      SizedBox(
-                        width: double.infinity,
-                        height: 56,
-                        child: ElevatedButton(
-                          onPressed: controller.nextPage,
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Theme.of(context).colorScheme.primary,
-                            foregroundColor: Theme.of(context).colorScheme.onPrimary,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            elevation: 4,
-                            shadowColor: Theme.of(context).colorScheme.primary.withValues(alpha: 0.2),
-                          ),
-                          child: Text(
-                            AppStrings.onboardingContinue,
-                            style: GoogleFonts.nunitoSans(
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                              letterSpacing: 2.0,
+                      Obx(
+                        () => Visibility(
+                          visible: controller.currentPage.value == 2,
+                          maintainSize: true,
+                          maintainAnimation: true,
+                          maintainState: true,
+                          child: SizedBox(
+                            width: double.infinity,
+                            height: 56,
+                            child: ElevatedButton(
+                              onPressed: controller.nextPage,
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Theme.of(context).colorScheme.primary,
+                                foregroundColor: Theme.of(context).colorScheme.onPrimary,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                elevation: 4,
+                                shadowColor: Theme.of(context).colorScheme.primary.withValues(alpha: 0.2),
+                              ),
+                              child: Text(
+                                AppStrings.onboardingContinue,
+                                style: GoogleFonts.nunitoSans(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                  letterSpacing: 2.0,
+                                ),
+                              ),
                             ),
                           ),
                         ),
