@@ -12,4 +12,7 @@ abstract class Routes {
   static const departments = '/departments';
   static const cart = '/cart';
   static const wishlist = '/wishlist';
+  static const checkout = '/checkout';
+  static const orderSuccess = '/order-success';
+  static const trackOrder = '/track-order';
 }

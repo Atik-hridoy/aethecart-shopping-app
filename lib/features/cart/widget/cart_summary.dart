@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:get/get.dart';
+import '../../../routes/app_pages.dart';
 
 class CartSummary extends StatelessWidget {
   const CartSummary({super.key});
@@ -88,7 +90,7 @@ class CartSummary extends StatelessWidget {
           ),
           const SizedBox(height: 32),
           FilledButton(
-            onPressed: () {},
+            onPressed: () => Get.toNamed(Routes.checkout),
             style: FilledButton.styleFrom(
               backgroundColor: Theme.of(context).colorScheme.primary,
               foregroundColor: Theme.of(context).colorScheme.onPrimary,

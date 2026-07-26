@@ -21,6 +21,12 @@ import '../features/splash/bindings/splash_binding.dart';
 import '../features/splash/view/splash_view.dart';
 import '../features/wishlist/bindings/wishlist_binding.dart';
 import '../features/wishlist/view/wishlist_view.dart';
+import '../features/checkout/bindings/checkout_binding.dart';
+import '../features/checkout/view/checkout_view.dart';
+import '../features/order_success/bindings/order_success_binding.dart';
+import '../features/order_success/view/order_success_view.dart';
+import '../features/track_order/bindings/track_order_binding.dart';
+import '../features/track_order/view/track_order_view.dart';
 
 part 'app_routes.dart';
 
@@ -82,6 +88,21 @@ class AppPages {
       name: Routes.wishlist,
       page: () => const WishlistView(),
       binding: WishlistBinding(),
+    ),
+    GetPage(
+      name: Routes.checkout,
+      page: () => const CheckoutView(),
+      binding: CheckoutBinding(),
+    ),
+    GetPage(
+      name: Routes.orderSuccess,
+      page: () => const OrderSuccessView(),
+      binding: OrderSuccessBinding(),
+    ),
+    GetPage(
+      name: Routes.trackOrder,
+      page: () => const TrackOrderView(),
+      binding: TrackOrderBinding(),
     ),
   ];
 }
