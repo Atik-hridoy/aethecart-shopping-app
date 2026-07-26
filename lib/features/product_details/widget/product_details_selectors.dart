@@ -26,13 +26,24 @@ class ProductDetailsSelectors extends GetView<ProductDetailsController> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          AppStrings.pdpColorOatmeal.toUpperCase(),
-          style: GoogleFonts.nunitoSans(
-            fontSize: 12,
-            fontWeight: FontWeight.bold,
-            letterSpacing: 2.0,
-            color: Theme.of(context).colorScheme.onSurfaceVariant,
+        RichText(
+          text: TextSpan(
+            text: 'COLOR — ',
+            style: GoogleFonts.nunitoSans(
+              fontSize: 12,
+              fontWeight: FontWeight.bold,
+              letterSpacing: 2.0,
+              color: Theme.of(context).colorScheme.onSurface,
+            ),
+            children: [
+              TextSpan(
+                text: 'Oatmeal',
+                style: GoogleFonts.nunitoSans(
+                  fontWeight: FontWeight.normal,
+                  color: Theme.of(context).colorScheme.onSurfaceVariant,
+                ),
+              ),
+            ],
           ),
         ),
         const SizedBox(height: 12),
@@ -62,16 +73,26 @@ class ProductDetailsSelectors extends GetView<ProductDetailsController> {
                 fontSize: 12,
                 fontWeight: FontWeight.bold,
                 letterSpacing: 2.0,
-                color: Theme.of(context).colorScheme.onSurfaceVariant,
+                color: Theme.of(context).colorScheme.onSurface,
               ),
             ),
-            Text(
-              AppStrings.pdpSizeGuide,
-              style: GoogleFonts.nunitoSans(
-                fontSize: 12,
-                fontWeight: FontWeight.bold,
-                decoration: TextDecoration.underline,
-                color: Theme.of(context).colorScheme.primary,
+            Container(
+              decoration: BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(
+                    color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.3),
+                    width: 1,
+                  ),
+                ),
+              ),
+              child: Text(
+                AppStrings.pdpSizeGuide.toUpperCase(),
+                style: GoogleFonts.nunitoSans(
+                  fontSize: 10,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 2.0,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
               ),
             ),
           ],
@@ -93,29 +114,39 @@ class ProductDetailsSelectors extends GetView<ProductDetailsController> {
 
   Widget _buildAiRecommendation(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.tertiaryContainer.withValues(alpha: 0.2),
+        color: Theme.of(context).colorScheme.surfaceContainerLow,
         borderRadius: BorderRadius.circular(12),
-        boxShadow: [
-          BoxShadow(
-            color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.05),
-            blurRadius: 20,
-            offset: const Offset(0, 4),
-          ),
-        ],
+        border: Border.all(
+          color: Theme.of(context).colorScheme.outlineVariant.withValues(alpha: 0.2),
+        ),
       ),
       child: Row(
         children: [
-          Icon(Icons.bolt, color: Theme.of(context).colorScheme.tertiary),
+          Icon(Icons.auto_awesome, color: Theme.of(context).colorScheme.primary),
           const SizedBox(width: 12),
           Expanded(
-            child: Text(
-              AppStrings.pdpAiSuggestion,
-              style: GoogleFonts.nunitoSans(
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
-                color: Theme.of(context).colorScheme.onTertiaryFixed,
+            child: RichText(
+              text: TextSpan(
+                text: 'Based on your ',
+                style: GoogleFonts.nunitoSans(
+                  fontSize: 12,
+                  color: Theme.of(context).colorScheme.onSurfaceVariant,
+                  height: 1.5,
+                ),
+                children: const [
+                  TextSpan(
+                    text: 'previous purchases',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  TextSpan(text: ' and profile, we recommend size '),
+                  TextSpan(
+                    text: 'Medium',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  TextSpan(text: ' for the best fit.'),
+                ],
               ),
             ),
           ),
@@ -183,7 +214,7 @@ class _SizeButton extends GetView<ProductDetailsController> {
           padding: const EdgeInsets.symmetric(vertical: 12),
           decoration: BoxDecoration(
             color: isSelected ? Theme.of(context).colorScheme.primary.withValues(alpha: 0.05) : Colors.transparent,
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(12),
             border: Border.all(
               color: isSelected ? Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.outlineVariant,
               width: 2,

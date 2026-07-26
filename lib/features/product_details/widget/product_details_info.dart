@@ -14,10 +14,10 @@ class ProductDetailsInfo extends StatelessWidget {
         Text(
           AppStrings.pdpCollectionTag.toUpperCase(),
           style: GoogleFonts.nunitoSans(
-            fontSize: 12,
+            fontSize: 12, // text-xs
             fontWeight: FontWeight.bold,
-            letterSpacing: 2.0,
-            color: Theme.of(context).colorScheme.tertiary,
+            letterSpacing: 4.0, // tracking-[0.25em]
+            color: Theme.of(context).colorScheme.primary,
           ),
         ),
         const SizedBox(height: 8),
@@ -25,7 +25,8 @@ class ProductDetailsInfo extends StatelessWidget {
           AppStrings.pdpTitle,
           style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                 color: Theme.of(context).colorScheme.onSurface,
-                height: 1.2,
+                height: 1.1, // leading-tight
+                letterSpacing: -0.5, // tracking-tight
               ),
         ),
         const SizedBox(height: 8),
@@ -33,8 +34,8 @@ class ProductDetailsInfo extends StatelessWidget {
           AppStrings.pdpPrice,
           style: GoogleFonts.nunitoSans(
             fontSize: 24,
-            fontWeight: FontWeight.w500,
-            color: Theme.of(context).colorScheme.primary,
+            fontWeight: FontWeight.w300, // font-light
+            color: Theme.of(context).colorScheme.onSurfaceVariant,
           ),
         ),
         const SizedBox(height: 16),
@@ -42,7 +43,7 @@ class ProductDetailsInfo extends StatelessWidget {
           AppStrings.pdpDescription,
           style: GoogleFonts.nunitoSans(
             fontSize: 16,
-            height: 1.6,
+            height: 1.625, // leading-relaxed
             color: Theme.of(context).colorScheme.onSurfaceVariant,
           ),
         ),

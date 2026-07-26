@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import '../features/product_details/bindings/product_details_binding.dart';
 import '../features/product_details/view/product_details_view.dart';
+import '../features/cart/bindings/cart_binding.dart';
+import '../features/cart/view/cart_view.dart';
 import '../features/collection_details/bindings/collection_details_binding.dart';
 import '../features/collection_details/view/collection_details_view.dart';
 import '../features/collections/bindings/collections_binding.dart';
@@ -17,6 +19,8 @@ import '../features/signup/bindings/signup_binding.dart';
 import '../features/signup/view/signup_view.dart';
 import '../features/splash/bindings/splash_binding.dart';
 import '../features/splash/view/splash_view.dart';
+import '../features/wishlist/bindings/wishlist_binding.dart';
+import '../features/wishlist/view/wishlist_view.dart';
 
 part 'app_routes.dart';
 
@@ -68,6 +72,16 @@ class AppPages {
       name: Routes.departments,
       page: () => const DepartmentsView(),
       binding: DepartmentsBinding(),
+    ),
+    GetPage(
+      name: Routes.cart,
+      page: () => const CartView(),
+      binding: CartBinding(),
+    ),
+    GetPage(
+      name: Routes.wishlist,
+      page: () => const WishlistView(),
+      binding: WishlistBinding(),
     ),
   ];
 }

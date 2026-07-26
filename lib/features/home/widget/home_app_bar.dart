@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../../core/constants/app_assets.dart';
 import '../../../core/constants/app_strings.dart';
+import '../../../routes/app_pages.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   const HomeAppBar({super.key});
@@ -52,7 +54,14 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                   ),
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () => Get.toNamed(Routes.wishlist),
+                  icon: Icon(
+                    Icons.favorite_border,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+                ),
+                IconButton(
+                  onPressed: () => Get.toNamed(Routes.cart),
                   icon: Icon(
                     Icons.shopping_bag_outlined,
                     color: Theme.of(context).colorScheme.primary,

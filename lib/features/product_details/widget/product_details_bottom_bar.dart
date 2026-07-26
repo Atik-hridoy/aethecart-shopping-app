@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../core/constants/app_strings.dart';
+import '../../../../routes/app_pages.dart';
 
 class ProductDetailsBottomBar extends StatelessWidget {
   const ProductDetailsBottomBar({super.key});
@@ -10,7 +12,13 @@ class ProductDetailsBottomBar extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surface.withValues(alpha: 0.9),
+        color: Theme.of(context).colorScheme.surface.withValues(alpha: 0.95),
+        border: Border(
+          top: BorderSide(
+            color: Theme.of(context).colorScheme.outlineVariant.withValues(alpha: 0.1),
+            width: 1,
+          ),
+        ),
       ),
       child: SafeArea(
         child: Row(
@@ -30,7 +38,7 @@ class ProductDetailsBottomBar extends StatelessWidget {
                   Icons.favorite_border,
                   color: Theme.of(context).colorScheme.primary,
                 ),
-                onPressed: () {},
+                onPressed: () => Get.toNamed(Routes.wishlist),
               ),
             ),
             const SizedBox(width: 16),
@@ -38,7 +46,7 @@ class ProductDetailsBottomBar extends StatelessWidget {
               child: SizedBox(
                 height: 56,
                 child: FilledButton.icon(
-                  onPressed: () {},
+                  onPressed: () => Get.toNamed(Routes.cart),
                   icon: const Icon(Icons.shopping_basket_outlined),
                   label: const Text(
                     AppStrings.pdpAdd,
