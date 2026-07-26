@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../../../routes/app_pages.dart';
 
 class ProfileActivityMenu extends StatelessWidget {
   const ProfileActivityMenu({super.key});
@@ -43,6 +46,7 @@ class ProfileActivityMenu extends StatelessWidget {
                 icon: Icons.straighten_outlined,
                 title: 'Saved Sizes',
                 subtitle: 'AI Powered',
+                onTap: () => Get.toNamed(Routes.savedSizes),
               ),
             ],
           ),

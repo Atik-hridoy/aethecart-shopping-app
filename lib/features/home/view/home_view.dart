@@ -13,28 +13,31 @@ class HomeView extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.surface,
-      appBar: const HomeAppBar(),
-      body: Stack(
-        children: [
-          Obx(() => IndexedStack(
-                index: controller.currentNavIndex.value,
-                children: const [
-                  HomeTab(),
-                  ExploreView(),
-                  AiChatView(),
-                  ProfileView(),
-                ],
-              )),
-          const Positioned(
-            bottom: 24,
-            left: 0,
-            right: 0,
-            child: HomeBottomNav(),
-          ),
-        ],
-      ),
-    );
+    return Obx(() {
+      final isProfile = controller.currentNavIndex.value == 3;
+      return Scaffold(
+        backgroundColor: Theme.of(context).colorScheme.surface,
+        appBar: isProfile ? null : const HomeAppBar(),
+        body: Stack(
+          children: [
+            IndexedStack(
+              index: controller.currentNavIndex.value,
+              children: const [
+                HomeTab(),
+                ExploreView(),
+                AiChatView(),
+                ProfileView(),
+              ],
+            ),
+            const Positioned(
+              bottom: 24,
+              left: 0,
+              right: 0,
+              child: HomeBottomNav(),
+            ),
+          ],
+        ),
+      );
+    });
   }
 }

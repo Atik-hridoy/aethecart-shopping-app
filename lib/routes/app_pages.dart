@@ -27,6 +27,8 @@ import '../features/order_success/bindings/order_success_binding.dart';
 import '../features/order_success/view/order_success_view.dart';
 import '../features/track_order/bindings/track_order_binding.dart';
 import '../features/track_order/view/track_order_view.dart';
+import '../features/saved_sizes/bindings/saved_sizes_binding.dart';
+import '../features/saved_sizes/view/saved_sizes_view.dart';
 
 part 'app_routes.dart';
 
@@ -103,6 +105,11 @@ class AppPages {
       name: Routes.trackOrder,
       page: () => const TrackOrderView(),
       binding: TrackOrderBinding(),
+    ),
+    GetPage(
+      name: Routes.savedSizes,
+      page: () => const SavedSizesView(),
+      binding: SavedSizesBinding(),
     ),
   ];
 }

@@ -15,4 +15,5 @@ abstract class Routes {
   static const checkout = '/checkout';
   static const orderSuccess = '/order-success';
   static const trackOrder = '/track-order';
+  static const savedSizes = '/saved-sizes';
 }
