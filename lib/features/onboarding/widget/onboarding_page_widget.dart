@@ -24,7 +24,8 @@ class OnboardingPageWidget extends StatelessWidget {
     final size = MediaQuery.sizeOf(context);
     final isSmallScreen = size.width < 360;
 
-    return Padding(
+    return SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
       padding: EdgeInsets.symmetric(horizontal: size.width * 0.06),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -32,7 +33,7 @@ class OnboardingPageWidget extends StatelessWidget {
           // Hero Image
           Container(
             width: double.infinity,
-            height: size.height * 0.5,
+            height: (size.height * 0.38).clamp(220.0, 400.0),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(40),
               boxShadow: [
@@ -163,7 +164,7 @@ class OnboardingPageWidget extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(height: size.height * 0.05),
+          SizedBox(height: size.height * 0.02),
           
           // Subhead
           FittedBox(
@@ -178,7 +179,7 @@ class OnboardingPageWidget extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 12),
           
           // Title
           FittedBox(
@@ -192,7 +193,7 @@ class OnboardingPageWidget extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 12),
           
           // Description
           Text(
@@ -200,13 +201,15 @@ class OnboardingPageWidget extends StatelessWidget {
             textAlign: TextAlign.center,
             style: GoogleFonts.nunitoSans(
               color: Theme.of(context).colorScheme.onSurfaceVariant,
-              fontSize: isSmallScreen ? 14 : 16,
+              fontSize: isSmallScreen ? 13 : 15,
               fontWeight: FontWeight.w300,
-              height: 1.5,
+              height: 1.4,
             ),
           ),
+          const SizedBox(height: 12),
         ],
       ),
     );
+
   }
 }

@@ -38,8 +38,21 @@ import '../features/track_order/bindings/track_order_binding.dart';
 import '../features/track_order/view/track_order_view.dart';
 import '../features/wishlist/bindings/wishlist_binding.dart';
 import '../features/wishlist/view/wishlist_view.dart';
+import '../features/seller/seller_dashboard/bindings/seller_dashboard_binding.dart';
+import '../features/seller/seller_dashboard/view/seller_dashboard_view.dart';
+import '../features/seller/seller_products/bindings/seller_products_binding.dart';
+import '../features/seller/seller_products/view/seller_products_view.dart';
+import '../features/seller/seller_add_product/bindings/seller_add_product_binding.dart';
+import '../features/seller/seller_add_product/view/seller_add_product_view.dart';
+import '../features/seller/seller_customization/bindings/seller_customization_binding.dart';
+import '../features/seller/seller_customization/view/seller_customization_view.dart';
+import '../features/seller/seller_settings/bindings/seller_settings_binding.dart';
+import '../features/seller/seller_settings/view/seller_settings_view.dart';
+import '../features/seller/seller_orders/bindings/seller_orders_binding.dart';
+import '../features/seller/seller_orders/view/seller_orders_view.dart';
 
 part 'app_routes.dart';
+
 
 class AppPages {
   static const initial = Routes.splash;
@@ -140,5 +153,36 @@ class AppPages {
       page: () => const NotificationView(),
       binding: NotificationBinding(),
     ),
+    GetPage(
+      name: Routes.sellerDashboard,
+      page: () => const SellerDashboardView(),
+      binding: SellerDashboardBinding(),
+    ),
+    GetPage(
+      name: Routes.sellerProducts,
+      page: () => const SellerProductsView(),
+      binding: SellerProductsBinding(),
+    ),
+    GetPage(
+      name: Routes.sellerAddProduct,
+      page: () => const SellerAddProductView(),
+      binding: SellerAddProductBinding(),
+    ),
+    GetPage(
+      name: Routes.sellerCustomization,
+      page: () => const SellerCustomizationView(),
+      binding: SellerCustomizationBinding(),
+    ),
+    GetPage(
+      name: Routes.sellerSettings,
+      page: () => const SellerSettingsView(),
+      binding: SellerSettingsBinding(),
+    ),
+    GetPage(
+      name: Routes.sellerOrders,
+      page: () => const SellerOrdersView(),
+      binding: SellerOrdersBinding(),
+    ),
   ];
 }
+

@@ -1,0 +1,345 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>AetherCart — Editorial Storefront Customization</title>
+<!-- Typography: Literata (Serif) & Nunito Sans (Sans) -->
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&amp;family=Nunito+Sans:ital,opsz,wght@0,200..1000;1,200..1000&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-error-container": "#690005",
+                    "inverse-on-surface": "#f5f0e8",
+                    "primary-fixed": "#c8e8d0",
+                    "primary-container": "#78a886",
+                    "error": "#b83230",
+                    "on-surface-variant": "#4a4e4a",
+                    "surface-container-low": "#f5f1ea",
+                    "surface-container-high": "#eae6de",
+                    "secondary-container": "#f0e8db",
+                    "on-surface": "#2e3230",
+                    "on-primary-fixed-variant": "#2a6038",
+                    "surface-variant": "#e4e0d8",
+                    "surface-bright": "#faf6f0",
+                    "on-error": "#ffffff",
+                    "surface-dim": "#dbd7cf",
+                    "tertiary-fixed": "#f8e0a8",
+                    "secondary": "#6b6358",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary": "#705c30",
+                    "surface-container-highest": "#e4e0d8",
+                    "surface": "#faf6f0",
+                    "inverse-surface": "#2e3230",
+                    "error-container": "#ffdad8",
+                    "background": "#faf6f0",
+                    "on-secondary-container": "#5e5548",
+                    "on-secondary-fixed": "#1e1a13",
+                    "on-background": "#2e3230",
+                    "secondary-fixed": "#f0e8db",
+                    "surface-container": "#f0ece4",
+                    "on-secondary": "#ffffff",
+                    "on-primary-container": "#d8f0de",
+                    "on-tertiary-fixed-variant": "#554020",
+                    "secondary-fixed-dim": "#d4ccbf",
+                    "surface-tint": "#4a7c59",
+                    "on-tertiary-container": "#554020",
+                    "on-primary-fixed": "#002110",
+                    "tertiary-container": "#c4a66a",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed-dim": "#dcc48e",
+                    "outline-variant": "#c4c8bc",
+                    "primary": "#4a7c59",
+                    "inverse-primary": "#8ecf9e",
+                    "on-primary": "#ffffff",
+                    "outline": "#74796e",
+                    "on-tertiary-fixed": "#221a05",
+                    "on-secondary-fixed-variant": "#4a4538",
+                    "primary-fixed-dim": "#8ecf9e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.5rem",
+                    "lg": "1rem",
+                    "xl": "1.5rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Literata", "serif"],
+                    "display": ["Literata", "serif"],
+                    "body": ["Nunito Sans", "sans-serif"],
+                    "label": ["Nunito Sans", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Nunito Sans', sans-serif; }
+        h1, h2, h3, .font-headline { font-family: 'Literata', serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c4c8bc;
+            border-radius: 10px;
+        }
+        .editorial-title {
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col lg:flex-row">
+<!-- Sidebar Navigation -->
+<aside class="hidden lg:flex flex-col h-screen w-20 fixed left-0 top-0 bg-surface-container border-r border-outline-variant/20 z-40">
+<div class="p-6 flex justify-center">
+<div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary">token</span>
+</div>
+</div>
+<nav class="flex-1 flex flex-col items-center gap-6 pt-10">
+<a class="text-on-surface-variant/60 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl">dashboard</span>
+</a>
+<a class="text-on-surface-variant/60 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl">shopping_bag</span>
+</a>
+<a class="text-on-surface-variant/60 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl">inventory_2</span>
+</a>
+<div class="w-8 h-px bg-outline-variant/30"></div>
+<a class="text-primary" href="#">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">architecture</span>
+</a>
+</nav>
+<div class="p-6 flex justify-center">
+<div class="w-8 h-8 rounded-full bg-secondary-container"></div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 lg:ml-20 pb-24 lg:pb-0">
+<!-- Top Bar -->
+<header class="w-full bg-background/80 backdrop-blur-md sticky top-0 z-30 px-8 py-6 flex justify-between items-center border-b border-outline-variant/10">
+<div>
+<span class="text-xs font-bold uppercase tracking-[0.2em] text-on-surface-variant/50">Editor</span>
+<h2 class="font-headline text-xl font-bold text-on-surface">Storefront Design</h2>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex items-center gap-3 bg-surface-container-high px-4 py-2 rounded-full border border-outline-variant/20">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Live Editing</span>
+</div>
+<button class="bg-on-surface text-surface px-6 py-2.5 rounded-full font-bold text-sm hover:opacity-90 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">visibility</span>
+                Preview
+            </button>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant">
+<img alt="Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVp_uNv59imk6ejSW9b_Sf9PCzTh6SE7cSnTGuhgS4mT0Te8qThx-UN-wN1J0cixtXiaGpz7IJkx6r3UA_HyP2I0e65rupoxV-9OC9K290yPHRlnH6qSEdD0ApCAZuU-lA8QGvP153bfFOO-KnszJc52t4qdo-ycZf1A6jUjxA0rQtPG-VehGmP-ZjE85FBZ2y9ScQys4uh7NaB3b3ljDLLesfhlsfuHKrwH_qR9oPDSgaJbeIWgfTgt2n__nqZ5GO01CdaBwGZI4b">
+</div>
+</div>
+</header>
+<div class="max-w-7xl mx-auto px-8 py-12 lg:py-20">
+<!-- Editorial Header -->
+<div class="mb-24">
+<h1 class="editorial-title font-headline text-5xl md:text-7xl font-bold text-on-background mb-8 max-w-4xl">
+                Curation is an art <br> <span class="italic text-primary">form in itself.</span>
+</h1>
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-8">
+<p class="text-on-surface-variant font-body text-xl max-w-xl leading-relaxed">
+                    Tailor your shop's digital presence to reflect the soul of your craft. Use warm colors and honest storytelling to connect with your community.
+                </p>
+<div class="flex gap-4">
+<button class="px-6 py-3 border border-outline text-sm font-bold rounded-full hover:bg-surface-variant transition-colors">Style Guide</button>
+<button class="px-6 py-3 bg-secondary-fixed text-on-secondary-fixed text-sm font-bold rounded-full hover:bg-secondary-fixed-dim transition-colors">Switch Theme</button>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+<!-- Left Column: Settings & Toggles -->
+<div class="lg:col-span-4 space-y-12 lg:sticky lg:top-32">
+<section>
+<div class="flex items-center gap-3 mb-6">
+<span class="w-8 h-px bg-primary"></span>
+<h3 class="text-xs font-bold uppercase tracking-[0.2em] text-primary">Identity</h3>
+</div>
+<div class="space-y-6">
+<div>
+<label class="block text-sm font-bold mb-3">Shop Profile</label>
+<div class="flex items-center gap-4">
+<div class="relative group cursor-pointer">
+<div class="w-20 h-20 rounded-full border border-outline-variant overflow-hidden">
+<img alt="Logo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCj6mBicCuctTY_K9Nw0nXjJiqoXINdfV8HJ8LcDjcwaIlJ6nZGxb5fvAw6muf7HsRp7tEdoJ-FFKagugVFuZavZYTQOTZCT9laHsfFA1Rdbg3qyrSuXSwS2lGWv3HDKBznS_ef6zLC8QLk6KyFHObknS-8jbhKKZIpkZK11x9p615AnqiQGQotqEqKB3yNfpqVAYjiwPhtrOEgQAIdwj73v0c7Sth0NaoJ1fi0MKY8PwdrI7Z_mqaAQ0CUFtq4xxyollxyoLdpB5Sx">
+</div>
+<div class="absolute inset-0 bg-black/40 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-white text-sm">edit</span>
+</div>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold mb-1">AetherCart Pottery</p>
+<p class="text-xs text-on-surface-variant">Update your logo and avatar.</p>
+</div>
+</div>
+</div>
+<div>
+<label class="block text-sm font-bold mb-3">Craft Narrative</label>
+<textarea class="w-full bg-surface-container-low border-transparent rounded-xl p-5 font-body text-on-surface focus:ring-1 focus:ring-primary focus:bg-white outline-none transition-all resize-none text-sm leading-relaxed" rows="5">Rooted in the ancient traditions of the Appalachian hills, our pottery is a celebration of the raw earth. Every piece is hand-thrown and wood-fired.</textarea>
+</div>
+</div>
+</section>
+<section>
+<div class="flex items-center gap-3 mb-6">
+<span class="w-8 h-px bg-primary"></span>
+<h3 class="text-xs font-bold uppercase tracking-[0.2em] text-primary">Modules</h3>
+</div>
+<div class="divide-y divide-outline-variant/10">
+<div class="py-4 flex items-center justify-between">
+<span class="text-sm font-semibold">Artisan Story</span>
+<button class="w-10 h-5 bg-primary rounded-full relative"><span class="absolute right-1 top-1 w-3 h-3 bg-white rounded-full"></span></button>
+</div>
+<div class="py-4 flex items-center justify-between">
+<span class="text-sm font-semibold">Studio Location</span>
+<button class="w-10 h-5 bg-outline-variant/30 rounded-full relative"><span class="absolute left-1 top-1 w-3 h-3 bg-white rounded-full"></span></button>
+</div>
+<div class="py-4 flex items-center justify-between">
+<span class="text-sm font-semibold">Testimonials</span>
+<button class="w-10 h-5 bg-primary rounded-full relative"><span class="absolute right-1 top-1 w-3 h-3 bg-white rounded-full"></span></button>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Visual Previews & Editor -->
+<div class="lg:col-span-8 space-y-24">
+<!-- Banner Editor -->
+<section>
+<div class="flex justify-between items-center mb-6">
+<h4 class="font-headline text-2xl font-bold italic">Brand Visuals</h4>
+<button class="text-sm font-bold text-primary border-b border-primary/20 hover:border-primary transition-all">Change Art Style</button>
+</div>
+<div class="group relative aspect-[16/7] rounded-2xl overflow-hidden bg-surface-dim border border-outline-variant/20 shadow-xl">
+<img alt="Banner" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkJxClKwpArzlJo3PbmveqgwFjnySmmV84WwuYka1kIk-g1vY1GeOSH5saYdgy1J7q3ej9uDgEtHUswMe9yZMHM8c1Ktjoblpxx-kbCFbBtq6zSivIw8DHZyX0CnN6u4Zs3jH3HuzZJzoYqxKPB9eg-h864nOhRIhUNZtqP90jmUNdw25UPakluthFtD0Jg0gfuN_OO_fgxNTEAOb4IpcMwsWlCEalMSNU_XiHG-6HfQ_diM9fx93dlFgBidiMlKbwWNGx9_cJwX36">
+<div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<button class="bg-white text-on-surface px-6 py-3 rounded-full font-bold shadow-lg flex items-center gap-2">
+<span class="material-symbols-outlined">add_photo_alternate</span>
+                                Replace Cover
+                            </button>
+</div>
+<div class="absolute bottom-6 left-6 text-white drop-shadow-md">
+<p class="text-xs font-bold uppercase tracking-[0.2em] mb-1">Current Banner</p>
+<p class="font-headline italic text-lg">Mornings in the Studio</p>
+</div>
+</div>
+</section>
+<!-- Featured Collections -->
+<section>
+<div class="mb-10">
+<h4 class="font-headline text-3xl font-bold mb-4">Featured Collections</h4>
+<p class="text-on-surface-variant text-base">Select the work that defines your current season. Drag to reorder.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Collection Item -->
+<div class="group relative aspect-square bg-white rounded-2xl overflow-hidden border border-outline-variant/20 shadow-sm hover:shadow-xl transition-all">
+<img alt="Collection" class="w-full h-full object-cover grayscale-[0.3] group-hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAx0xvD5cKkQbF_0YVLfJefv3FEXop-W38U5WAEdHs20tNOA2idySd5aK_9schDFBNcgk9LeKH7mwZITSYcSBX5PufaD_4fSUWE6YJgzp3MGTDZNo7PVLVvPIG5rR8e90cpebYs0vatvN_xrbxXAqAxXnJv-c4h-x_jlhnnVMDSjla-yEO_Ppkx8-XvyXnw0qB5zJ9tPreSl1uBouv-1a14hyaNxoPOIhPWJ4-vSD_gDwOgixgNPWJGhqQuilUE01SVfSWsvEl88T6q">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-8">
+<h5 class="text-white font-headline text-2xl font-bold mb-1">The Terra Series</h5>
+<p class="text-white/70 text-xs font-bold tracking-widest uppercase mb-4">Autumn '24 • 12 Items</p>
+<div class="flex gap-2">
+<button class="bg-white/20 backdrop-blur-md text-white px-4 py-2 rounded-full text-xs font-bold border border-white/20 hover:bg-white hover:text-on-surface transition-all">Edit Set</button>
+<button class="p-2 bg-white/20 backdrop-blur-md text-white rounded-full border border-white/20">
+<span class="material-symbols-outlined text-sm">close</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Collection Item 2 -->
+<div class="group relative aspect-square bg-white rounded-2xl overflow-hidden border border-outline-variant/20 shadow-sm hover:shadow-xl transition-all">
+<img alt="Collection" class="w-full h-full object-cover grayscale-[0.3] group-hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9-uOv9Otm4FjeZ7ZL6RTQM3gVqX5GNqoQ1yQAc5ATSRq1tlp8py8PRE7cjFq_9rBBt4ZIKmgCoCx85S-Vu9f0p7mu0IMjZkJ-WKFpdWa3UQGuSjuMGseyvxeSi1gcHYj99F5XC6uWYuYJ6kDZB5UdToABs_AuNMXYq6wr1sP8jJhOpTgug-tT005n6cXwG8x4HbYFGfzYrADSWtzCArE8IgSu6ruiTwl4pFVZpf1cbb-kkxllY8x6p3ZkoyLtpu4Ho3xo9FpDtTDU">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-8">
+<h5 class="text-white font-headline text-2xl font-bold mb-1">Minimalist Dining</h5>
+<p class="text-white/70 text-xs font-bold tracking-widest uppercase mb-4">Core Collection • 8 Items</p>
+<div class="flex gap-2">
+<button class="bg-white/20 backdrop-blur-md text-white px-4 py-2 rounded-full text-xs font-bold border border-white/20 hover:bg-white hover:text-on-surface transition-all">Edit Set</button>
+<button class="p-2 bg-white/20 backdrop-blur-md text-white rounded-full border border-white/20">
+<span class="material-symbols-outlined text-sm">close</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Empty Add Slot -->
+<button class="group relative aspect-square bg-surface-container border-2 border-dashed border-outline-variant/40 rounded-2xl flex flex-col items-center justify-center text-on-surface-variant hover:border-primary hover:bg-primary/5 transition-all">
+<span class="material-symbols-outlined text-5xl mb-4 text-outline-variant group-hover:text-primary group-hover:scale-110 transition-transform">add_circle</span>
+<span class="text-sm font-bold uppercase tracking-widest">Add Featured Work</span>
+</button>
+<!-- Secondary Add Slot -->
+<button class="group relative aspect-square bg-surface-container border-2 border-dashed border-outline-variant/40 rounded-2xl flex flex-col items-center justify-center text-on-surface-variant hover:border-primary hover:bg-primary/5 transition-all">
+<span class="material-symbols-outlined text-5xl mb-4 text-outline-variant group-hover:text-primary group-hover:scale-110 transition-transform">add_circle</span>
+<span class="text-sm font-bold uppercase tracking-widest">Add Featured Work</span>
+</button>
+</div>
+</section>
+<!-- Artisan Story (Magazine Layout) -->
+<section class="bg-white rounded-[2rem] overflow-hidden border border-outline-variant/20 shadow-2xl relative">
+<div class="absolute top-8 left-8 z-10 flex items-center gap-2 px-3 py-1 bg-white/80 backdrop-blur-md border border-outline-variant/20 rounded-full">
+<span class="text-[10px] font-bold uppercase tracking-widest">Preview: Artisan Story</span>
+</div>
+<div class="p-12 md:p-20 flex flex-col items-center text-center">
+<div class="mb-12">
+<span class="material-symbols-outlined text-primary text-6xl" style="font-variation-settings: 'FILL' 1;">eco</span>
+</div>
+<h5 class="editorial-title font-headline text-4xl md:text-6xl font-bold italic mb-10 max-w-4xl">
+                            "Nature is the first architect, and we are but humble students of her symmetry."
+                        </h5>
+<div class="w-16 h-px bg-outline-variant mb-10"></div>
+<p class="font-body text-on-surface-variant text-xl leading-relaxed max-w-2xl mb-12">
+                            This quote appears at the top of your story module. It sets the tone for your brand's philosophy and connects with the customer's appreciation for craftsmanship.
+                        </p>
+<div class="flex gap-6">
+<button class="bg-on-surface text-surface px-10 py-4 rounded-full font-bold hover:bg-on-surface/90 transition-all">Edit Content</button>
+<button class="bg-surface-variant text-on-surface-variant px-10 py-4 rounded-full font-bold hover:bg-outline-variant/20 transition-all">Manage Media</button>
+</div>
+</div>
+<!-- Background Decoration -->
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -mr-32 -mt-32"></div>
+<div class="absolute bottom-0 left-0 w-64 h-64 bg-tertiary/5 rounded-full blur-3xl -ml-32 -mb-32"></div>
+</section>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Nav (Mobile Only) -->
+<nav class="lg:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 py-3 pb-safe bg-surface-container-highest/90 backdrop-blur-lg z-50 border-t border-outline-variant/10"><a class="flex flex-col items-center p-2 gap-1" href="#"><span class="material-symbols-outlined text-on-surface-variant">home</span><span class="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant">Home</span></a><a class="flex flex-col items-center p-2 gap-1" href="#"><span class="material-symbols-outlined text-on-surface-variant">list_alt</span><span class="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant">Orders</span></a><a class="flex flex-col items-center p-2 gap-1" href="#"><span class="material-symbols-outlined text-on-surface-variant">inventory_2</span><span class="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant">Inventory</span></a><a class="flex flex-col items-center p-2 gap-1" href="#"><span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">person</span><span class="text-[10px] font-bold uppercase tracking-wider text-primary">Account</span></a></nav>
+<!-- FAB: Save -->
+<button class="fixed bottom-24 lg:bottom-10 right-8 lg:right-12 w-16 h-16 bg-primary text-on-primary rounded-full shadow-[0_8px_30px_rgb(74,124,89,0.4)] flex items-center justify-center group active:scale-95 transition-all z-50">
+<span class="material-symbols-outlined text-2xl group-hover:rotate-12 transition-transform">publish</span>
+<span class="absolute right-full mr-4 bg-on-surface text-surface px-4 py-2 rounded-lg text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">Publish Changes</span>
+</button>
+<script>
+    // Interaction effects
+    const saveBtn = document.querySelector('button.bg-primary.rounded-full');
+    saveBtn.addEventListener('click', () => {
+        const icon = saveBtn.querySelector('.material-symbols-outlined');
+        const originalIcon = icon.innerText;
+        icon.innerText = 'sync';
+        icon.classList.add('animate-spin');
+        
+        setTimeout(() => {
+            icon.innerText = 'done_all';
+            icon.classList.remove('animate-spin');
+            setTimeout(() => {
+                icon.innerText = originalIcon;
+            }, 2000);
+        }, 1200);
+    });
+</script>
+
+
+</body></html>

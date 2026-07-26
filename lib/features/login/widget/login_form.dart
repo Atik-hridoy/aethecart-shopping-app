@@ -44,7 +44,64 @@ class LoginForm extends GetView<LoginController> {
               onToggleVisibility: controller.togglePasswordVisibility,
             ),
           ),
+          const SizedBox(height: 20),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'ACCOUNT TYPE',
+                style: GoogleFonts.nunitoSans(
+                  fontSize: 10,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 1.5,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+              ),
+              const SizedBox(height: 8),
+              Obx(
+                () => Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.surface,
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(
+                      color: Theme.of(context).colorScheme.outline.withOpacity(0.3),
+                    ),
+                  ),
+                  child: DropdownButtonHideUnderline(
+                    child: DropdownButton<String>(
+                      value: controller.selectedRole.value,
+                      isExpanded: true,
+                      icon: Icon(
+                        Icons.keyboard_arrow_down_rounded,
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
+                      items: controller.roles.map((String role) {
+                        return DropdownMenuItem<String>(
+                          value: role,
+                          child: Text(
+                            role == 'Seller' ? 'Seller / Merchant Account' : 'Customer Account',
+                            style: GoogleFonts.nunitoSans(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                              color: Theme.of(context).colorScheme.onSurface,
+                            ),
+                          ),
+                        );
+                      }).toList(),
+                      onChanged: (value) {
+                        if (value != null) {
+                          controller.selectRole(value);
+                        }
+                      },
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
           const SizedBox(height: 32),
+
           SizedBox(
             width: double.infinity,
             height: 56,

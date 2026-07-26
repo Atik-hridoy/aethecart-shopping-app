@@ -20,4 +20,14 @@ abstract class Routes {
   static const privacySettings = '/privacy-settings';
   static const securityPrivacy = '/security-privacy';
   static const notification = '/notification';
+  
+  // Seller Routes
+  static const sellerDashboard = '/seller-dashboard';
+  static const sellerProducts = '/seller-products';
+  static const sellerAddProduct = '/seller-add-product';
+  static const sellerOrders = '/seller-orders';
+  static const sellerCustomization = '/seller-customization';
+  static const sellerSettings = '/seller-settings';
 }
+
+

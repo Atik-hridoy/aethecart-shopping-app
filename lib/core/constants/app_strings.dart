@@ -214,4 +214,52 @@ class AppStrings {
   static const String navExplore = 'Explore';
   static const String navAiChat = 'AI Chat';
   static const String navProfile = 'Profile';
+
+  // Seller Dashboard & Seller Module Strings
+  static const String sellerDashboardTitle = 'Seller Dashboard';
+  static const String sellerWelcomeText = 'Welcome back, Artisan Merchant';
+  static const String sellerOverview = 'Overview & Analytics';
+  static const String sellerTotalRevenue = 'Total Revenue';
+  static const String sellerTotalOrders = 'Total Orders';
+  static const String sellerActiveProducts = 'Active Listings';
+  static const String sellerAvgRating = 'Seller Rating';
+  static const String sellerQuickActions = 'Quick Actions';
+  static const String sellerAddProductBtn = 'Add New Product';
+  static const String sellerManageCatalog = 'Manage Inventory';
+  static const String sellerViewOrders = 'View Customer Orders';
+  static const String sellerRecentOrders = 'Recent Orders';
+  static const String sellerAllProducts = 'Product Inventory';
+  static const String sellerAddProductTitle = 'Add New Product';
+  static const String sellerProductTitleLabel = 'Product Title';
+  static const String sellerProductTitleHint = 'e.g. Hand-loomed Linen Kimono';
+  static const String sellerPriceLabel = 'Price (\$)';
+  static const String sellerPriceHint = '0.00';
+  static const String sellerStockLabel = 'Stock Quantity';
+  static const String sellerStockHint = '10';
+  static const String sellerCategoryLabel = 'Category';
+  static const String sellerDescriptionLabel = 'Description';
+  static const String sellerDescriptionHint = 'Describe materials, craftsmanship, care instructions...';
+  static const String sellerPublishProduct = 'PUBLISH PRODUCT';
+  static const String sellerOrderStatusPending = 'Pending';
+  static const String sellerOrderStatusProcessing = 'Processing';
+  static const String sellerOrderStatusShipped = 'Shipped';
+  static const String sellerOrderStatusDelivered = 'Delivered';
+  static const String sellerMarkShipped = 'Mark as Shipped';
+
+  // Extended PDP Form Labels for Seller
+  static const String sellerCollectionTagLabel = 'Collection / Subtitle Tag';
+  static const String sellerCollectionTagHint = 'e.g. Natural Linens Collection';
+  static const String sellerComparePriceLabel = 'Compare At Price (\$)';
+  static const String sellerComparePriceHint = 'Original price before discount';
+  static const String sellerColorsLabel = 'Available Colors (Comma Separated)';
+  static const String sellerColorsHint = 'e.g. Oatmeal, Terracotta, Sage';
+  static const String sellerSizesLabel = 'Available Sizes';
+  static const String sellerMaterialsCareLabel = 'Materials & Care Instructions';
+  static const String sellerMaterialsCareHint = 'e.g. 100% Hand-loomed Silk. Gentle hand wash in cool water...';
+  static const String sellerSustainabilityLabel = 'Sustainability Impact Details';
+  static const String sellerSustainabilityHint = 'e.g. Sourced from a women-led collective. Zero synthetic chemicals...';
+  static const String sellerShippingReturnsLabel = 'Shipping & Return Policy';
+  static const String sellerShippingReturnsHint = 'e.g. Complimentary carbon-neutral shipping on orders over \$150...';
 }
+
+
