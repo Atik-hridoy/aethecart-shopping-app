@@ -33,12 +33,14 @@ class ProfileActivityMenu extends StatelessWidget {
                 context: context,
                 icon: Icons.inventory_2_outlined,
                 title: 'Order History',
+                onTap: () => Get.toNamed(Routes.orderHistory),
               ),
               const SizedBox(height: 8),
               _buildActivityItem(
                 context: context,
                 icon: Icons.favorite_border,
                 title: 'Wishlist',
+                onTap: () => Get.toNamed(Routes.wishlist),
               ),
               const SizedBox(height: 8),
               _buildActivityItem(

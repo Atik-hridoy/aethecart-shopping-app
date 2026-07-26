@@ -29,6 +29,12 @@ import '../features/track_order/bindings/track_order_binding.dart';
 import '../features/track_order/view/track_order_view.dart';
 import '../features/saved_sizes/bindings/saved_sizes_binding.dart';
 import '../features/saved_sizes/view/saved_sizes_view.dart';
+import '../features/order_history/bindings/order_history_binding.dart';
+import '../features/order_history/view/order_history_view.dart';
+import '../features/privacy_settings/bindings/privacy_settings_binding.dart';
+import '../features/privacy_settings/view/privacy_settings_view.dart';
+import '../features/security_privacy/bindings/security_privacy_binding.dart';
+import '../features/security_privacy/view/security_privacy_view.dart';
 
 part 'app_routes.dart';
 
@@ -110,6 +116,21 @@ class AppPages {
       name: Routes.savedSizes,
       page: () => const SavedSizesView(),
       binding: SavedSizesBinding(),
+    ),
+    GetPage(
+      name: Routes.orderHistory,
+      page: () => const OrderHistoryView(),
+      binding: OrderHistoryBinding(),
+    ),
+    GetPage(
+      name: Routes.privacySettings,
+      page: () => const PrivacySettingsView(),
+      binding: PrivacySettingsBinding(),
+    ),
+    GetPage(
+      name: Routes.securityPrivacy,
+      page: () => const SecurityPrivacyView(),
+      binding: SecurityPrivacyBinding(),
     ),
   ];
 }
