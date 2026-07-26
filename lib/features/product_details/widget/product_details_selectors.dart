@@ -76,22 +76,30 @@ class ProductDetailsSelectors extends GetView<ProductDetailsController> {
                 color: Theme.of(context).colorScheme.onSurface,
               ),
             ),
-            Container(
-              decoration: BoxDecoration(
-                border: Border(
-                  bottom: BorderSide(
-                    color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.3),
-                    width: 1,
+            InkWell(
+              onTap: () => controller.openSizeGuideModal(context),
+              borderRadius: BorderRadius.circular(4),
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+                decoration: BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(
+                      color: Theme.of(context)
+                          .colorScheme
+                          .primary
+                          .withValues(alpha: 0.5),
+                      width: 1.5,
+                    ),
                   ),
                 ),
-              ),
-              child: Text(
-                AppStrings.pdpSizeGuide.toUpperCase(),
-                style: GoogleFonts.nunitoSans(
-                  fontSize: 10,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: 2.0,
-                  color: Theme.of(context).colorScheme.primary,
+                child: Text(
+                  AppStrings.pdpSizeGuide.toUpperCase(),
+                  style: GoogleFonts.nunitoSans(
+                    fontSize: 10,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 2.0,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
                 ),
               ),
             ),

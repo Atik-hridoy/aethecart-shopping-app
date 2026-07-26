@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+
+import 'metric_progress_card.dart';
+import 'physical_stats_card.dart';
+import 'secondary_measurement_card.dart';
 
 class MeasurementGrid extends StatelessWidget {
   const MeasurementGrid({
@@ -26,67 +29,91 @@ class MeasurementGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final stats = [
-      _MeasurementItem('Height', '$height cm', theme.colorScheme.primary),
-      _MeasurementItem('Weight', '$weight kg', theme.colorScheme.tertiary),
-      _MeasurementItem('Chest', '$chest cm', theme.colorScheme.primary),
-      _MeasurementItem('Waist', '$waist cm', theme.colorScheme.secondary),
-      _MeasurementItem('Shoulder', '$shoulder cm', theme.colorScheme.primary),
-      _MeasurementItem('Inseam', '$inseam cm', theme.colorScheme.tertiary),
-      _MeasurementItem('Neck', '$neck cm', theme.colorScheme.primary),
-      _MeasurementItem('Arm Length', '$armLength cm', theme.colorScheme.secondary),
-    ];
 
-    return GridView.builder(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      itemCount: stats.length,
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        crossAxisSpacing: 12,
-        mainAxisSpacing: 12,
-        childAspectRatio: 1.8,
-      ),
-      itemBuilder: (context, index) {
-        final item = stats[index];
-        return Container(
-          padding: const EdgeInsets.all(16),
-          decoration: BoxDecoration(
-            color: theme.colorScheme.surfaceContainerLow,
-            borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: theme.colorScheme.outlineVariant.withValues(alpha: 0.3)),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                item.label,
-                style: theme.textTheme.labelMedium?.copyWith(
-                  color: theme.colorScheme.onSurfaceVariant,
-                ),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final isMobile = constraints.maxWidth < 640;
+
+        return Column(
+          children: [
+            // Top Grid (Physical Stats + Chest + Waist)
+            if (isMobile)
+              Column(
+                children: [
+                  PhysicalStatsCard(height: height, weight: weight),
+                  const SizedBox(height: 16),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: MetricProgressCard(
+                          label: 'Chest',
+                          value: chest,
+                          percent: 0.65,
+                          barColor: theme.colorScheme.primary,
+                        ),
+                      ),
+                      const SizedBox(width: 16),
+                      Expanded(
+                        child: MetricProgressCard(
+                          label: 'Waist',
+                          value: waist,
+                          percent: 0.50,
+                          barColor: theme.colorScheme.tertiary,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              )
+            else
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    flex: 2,
+                    child: PhysicalStatsCard(height: height, weight: weight),
+                  ),
+                  const SizedBox(width: 16),
+                  Expanded(
+                    flex: 1,
+                    child: MetricProgressCard(
+                      label: 'Chest',
+                      value: chest,
+                      percent: 0.65,
+                      barColor: theme.colorScheme.primary,
+                    ),
+                  ),
+                  const SizedBox(width: 16),
+                  Expanded(
+                    flex: 1,
+                    child: MetricProgressCard(
+                      label: 'Waist',
+                      value: waist,
+                      percent: 0.50,
+                      barColor: theme.colorScheme.tertiary,
+                    ),
+                  ),
+                ],
               ),
-              const SizedBox(height: 6),
-              Text(
-                item.value,
-                style: GoogleFonts.nunitoSans(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w700,
-                  color: item.color,
-                ),
-              ),
-            ],
-          ),
+            const SizedBox(height: 16),
+            // Secondary Measurements Grid (Shoulder, Inseam, Neck, Arm Length)
+            GridView.count(
+              crossAxisCount: isMobile ? 2 : 4,
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              crossAxisSpacing: 16,
+              mainAxisSpacing: 16,
+              childAspectRatio: isMobile ? 1.8 : 1.7,
+              children: [
+                SecondaryMeasurementCard(label: 'Shoulder', value: '$shoulder cm'),
+                SecondaryMeasurementCard(label: 'Inseam', value: '$inseam cm'),
+                SecondaryMeasurementCard(label: 'Neck', value: '$neck cm'),
+                SecondaryMeasurementCard(label: 'Arm Length', value: '$armLength cm'),
+              ],
+            ),
+          ],
         );
       },
     );
   }
-}
-
-class _MeasurementItem {
-  const _MeasurementItem(this.label, this.value, this.color);
-
-  final String label;
-  final String value;
-  final Color color;
 }

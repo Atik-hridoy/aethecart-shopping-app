@@ -7,7 +7,9 @@ import '../widget/product_details_app_bar.dart';
 import '../widget/product_details_bottom_bar.dart';
 import '../widget/product_details_gallery.dart';
 import '../widget/product_details_info.dart';
+import '../widget/product_details_reviews.dart';
 import '../widget/product_details_selectors.dart';
+import '../widget/product_details_shop_info.dart';
 
 class ProductDetailsView extends GetView<ProductDetailsController> {
   const ProductDetailsView({super.key});
@@ -36,14 +38,18 @@ class ProductDetailsView extends GetView<ProductDetailsController> {
   Widget _buildNarrowLayout() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: const [
-        ProductDetailsGallery(),
-        SizedBox(height: 32),
-        ProductDetailsInfo(),
-        SizedBox(height: 32),
-        ProductDetailsSelectors(),
-        SizedBox(height: 32),
-        ProductDetailsAccordions(),
+      children: [
+        const ProductDetailsGallery(),
+        const SizedBox(height: 32),
+        const ProductDetailsInfo(),
+        const SizedBox(height: 32),
+        const ProductDetailsSelectors(),
+        const SizedBox(height: 32),
+        ProductDetailsShopInfo(controller: controller),
+        const SizedBox(height: 32),
+        const ProductDetailsAccordions(),
+        const SizedBox(height: 32),
+        ProductDetailsReviews(controller: controller),
       ],
     );
   }
@@ -52,21 +58,29 @@ class ProductDetailsView extends GetView<ProductDetailsController> {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Expanded(
+        Expanded(
           flex: 3,
-          child: ProductDetailsGallery(),
+          child: Column(
+            children: [
+              const ProductDetailsGallery(),
+              const SizedBox(height: 32),
+              ProductDetailsReviews(controller: controller),
+            ],
+          ),
         ),
         const SizedBox(width: 48),
         Expanded(
           flex: 2,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              ProductDetailsInfo(),
-              SizedBox(height: 32),
-              ProductDetailsSelectors(),
-              SizedBox(height: 32),
-              ProductDetailsAccordions(),
+            children: [
+              const ProductDetailsInfo(),
+              const SizedBox(height: 32),
+              const ProductDetailsSelectors(),
+              const SizedBox(height: 32),
+              ProductDetailsShopInfo(controller: controller),
+              const SizedBox(height: 32),
+              const ProductDetailsAccordions(),
             ],
           ),
         ),

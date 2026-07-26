@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../../../core/constants/app_assets.dart';
 import '../../../core/constants/app_strings.dart';
 import '../../../routes/app_pages.dart';
@@ -25,7 +26,10 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     border: Border.all(
-                      color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.2),
+                      color: Theme.of(context)
+                          .colorScheme
+                          .primary
+                          .withValues(alpha: 0.2),
                       width: 2,
                     ),
                     image: const DecorationImage(
@@ -38,16 +42,16 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                 Text(
                   AppStrings.splashTitle,
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                    color: Theme.of(context).colorScheme.primary,
-                    fontWeight: FontWeight.bold,
-                  ),
+                        color: Theme.of(context).colorScheme.primary,
+                        fontWeight: FontWeight.bold,
+                      ),
                 ),
               ],
             ),
             Row(
               children: [
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () => Get.toNamed(Routes.notification),
                   icon: Icon(
                     Icons.notifications_outlined,
                     color: Theme.of(context).colorScheme.primary,

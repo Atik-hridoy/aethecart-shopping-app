@@ -16,9 +16,10 @@ class SavedSizesView extends GetView<SavedSizesController> {
     final theme = Theme.of(context);
 
     return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
+      backgroundColor: theme.colorScheme.surface,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: theme.colorScheme.surface.withValues(alpha: 0.8),
+        surfaceTintColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
           onPressed: () => Get.back(),
@@ -26,26 +27,52 @@ class SavedSizesView extends GetView<SavedSizesController> {
           color: theme.colorScheme.primary,
         ),
         title: Text(
-          'Saved Sizes',
+          'AetherCart',
           style: GoogleFonts.literata(
             fontSize: 22,
-            fontWeight: FontWeight.w700,
+            fontWeight: FontWeight.bold,
             color: theme.colorScheme.primary,
+            letterSpacing: -0.5,
           ),
         ),
         centerTitle: true,
+        actions: [
+          Stack(
+            clipBehavior: Clip.none,
+            children: [
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.shopping_bag_outlined),
+                color: theme.colorScheme.primary,
+              ),
+              Positioned(
+                top: 10,
+                right: 10,
+                child: Container(
+                  width: 8,
+                  height: 8,
+                  decoration: BoxDecoration(
+                    color: theme.colorScheme.tertiary,
+                    shape: BoxShape.circle,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(width: 8),
+        ],
       ),
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.fromLTRB(20, 8, 20, 120),
+          padding: const EdgeInsets.fromLTRB(24, 16, 24, 100),
           child: Center(
             child: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 900),
+              constraints: const BoxConstraints(maxWidth: 1024),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   const ProfileHeaderCard(),
-                  const SizedBox(height: 24),
+                  const SizedBox(height: 32),
                   MeasurementGrid(
                     height: controller.height,
                     weight: controller.weight,
@@ -56,9 +83,9 @@ class SavedSizesView extends GetView<SavedSizesController> {
                     neck: controller.neck,
                     armLength: controller.armLength,
                   ),
-                  const SizedBox(height: 24),
+                  const SizedBox(height: 32),
                   BrandPreferencesList(brands: controller.brands),
-                  const SizedBox(height: 24),
+                  const SizedBox(height: 32),
                   ScanBanner(onPressed: controller.startScan),
                 ],
               ),
@@ -68,5 +95,4 @@ class SavedSizesView extends GetView<SavedSizesController> {
       ),
     );
   }
-
 }

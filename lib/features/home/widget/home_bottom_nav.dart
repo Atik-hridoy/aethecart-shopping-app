@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../controller/home_controller.dart';
 
 class HomeBottomNav extends GetView<HomeController> {
@@ -13,11 +14,17 @@ class HomeBottomNav extends GetView<HomeController> {
         constraints: const BoxConstraints(maxWidth: 400),
         height: 64,
         decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.surfaceContainerHigh.withValues(alpha: 0.9),
+          color: Theme.of(context)
+              .colorScheme
+              .surfaceContainerHigh
+              .withValues(alpha: 0.9),
           borderRadius: BorderRadius.circular(32),
           boxShadow: [
             BoxShadow(
-              color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.06),
+              color: Theme.of(context)
+                  .colorScheme
+                  .onSurface
+                  .withValues(alpha: 0.06),
               blurRadius: 20,
               offset: const Offset(0, 4),
             )
@@ -29,7 +36,7 @@ class HomeBottomNav extends GetView<HomeController> {
           children: [
             _buildNavItem(context, Icons.home_outlined, 0),
             _buildNavItem(context, Icons.search_outlined, 1),
-            _buildNavItem(context, Icons.auto_awesome, 2),
+            _buildNavItem(context, Icons.chat_bubble_outline_rounded, 2),
             _buildNavItem(context, Icons.person_outline, 3),
           ],
         ),
@@ -46,7 +53,9 @@ class HomeBottomNav extends GetView<HomeController> {
         child: Container(
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: isActive ? Theme.of(context).colorScheme.primary : Colors.transparent,
+            color: isActive
+                ? Theme.of(context).colorScheme.primary
+                : Colors.transparent,
             shape: BoxShape.circle,
             boxShadow: isActive
                 ? [

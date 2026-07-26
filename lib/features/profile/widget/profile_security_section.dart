@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../routes/app_pages.dart';
 import '../controller/profile_controller.dart';
 
 class ProfileSecuritySection extends GetView<ProfileController> {
@@ -21,11 +22,21 @@ class ProfileSecuritySection extends GetView<ProfileController> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            'Security & Privacy',
-            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Security & Privacy',
+                style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
+              ),
+              IconButton(
+                onPressed: () => Get.toNamed(Routes.securityPrivacy),
+                icon: const Icon(Icons.arrow_forward_rounded),
+                tooltip: 'Open Security & Privacy Center',
+              ),
+            ],
           ),
           const SizedBox(height: 24),
           LayoutBuilder(
@@ -94,6 +105,7 @@ class ProfileSecuritySection extends GetView<ProfileController> {
           context: context,
           icon: Icons.lock_reset,
           label: 'Change Password',
+          onTap: () => Get.toNamed(Routes.securityPrivacy),
         ),
       ],
     );
@@ -106,6 +118,14 @@ class ProfileSecuritySection extends GetView<ProfileController> {
           context: context,
           icon: Icons.visibility_off_outlined,
           label: 'Privacy Settings',
+          onTap: () => Get.toNamed(Routes.privacySettings),
+        ),
+        const SizedBox(height: 12),
+        _buildActionButton(
+          context: context,
+          icon: Icons.shield_outlined,
+          label: 'Security & Privacy Center',
+          onTap: () => Get.toNamed(Routes.securityPrivacy),
         ),
         const SizedBox(height: 24),
         Container(

@@ -1,8 +1,9 @@
 import 'package:get/get.dart';
-import '../features/product_details/bindings/product_details_binding.dart';
-import '../features/product_details/view/product_details_view.dart';
+
 import '../features/cart/bindings/cart_binding.dart';
 import '../features/cart/view/cart_view.dart';
+import '../features/checkout/bindings/checkout_binding.dart';
+import '../features/checkout/view/checkout_view.dart';
 import '../features/collection_details/bindings/collection_details_binding.dart';
 import '../features/collection_details/view/collection_details_view.dart';
 import '../features/collections/bindings/collections_binding.dart';
@@ -13,22 +14,30 @@ import '../features/home/bindings/home_binding.dart';
 import '../features/home/view/home_view.dart';
 import '../features/login/bindings/login_binding.dart';
 import '../features/login/view/login_view.dart';
+import '../features/notification/bindings/notification_binding.dart';
+import '../features/notification/view/notification_view.dart';
 import '../features/onboarding/bindings/onboarding_binding.dart';
 import '../features/onboarding/view/onboarding_view.dart';
+import '../features/order_history/bindings/order_history_binding.dart';
+import '../features/order_history/view/order_history_view.dart';
+import '../features/order_success/bindings/order_success_binding.dart';
+import '../features/order_success/view/order_success_view.dart';
+import '../features/privacy_settings/bindings/privacy_settings_binding.dart';
+import '../features/privacy_settings/view/privacy_settings_view.dart';
+import '../features/product_details/bindings/product_details_binding.dart';
+import '../features/product_details/view/product_details_view.dart';
+import '../features/saved_sizes/bindings/saved_sizes_binding.dart';
+import '../features/saved_sizes/view/saved_sizes_view.dart';
+import '../features/security_privacy/bindings/security_privacy_binding.dart';
+import '../features/security_privacy/view/security_privacy_view.dart';
 import '../features/signup/bindings/signup_binding.dart';
 import '../features/signup/view/signup_view.dart';
 import '../features/splash/bindings/splash_binding.dart';
 import '../features/splash/view/splash_view.dart';
-import '../features/wishlist/bindings/wishlist_binding.dart';
-import '../features/wishlist/view/wishlist_view.dart';
-import '../features/checkout/bindings/checkout_binding.dart';
-import '../features/checkout/view/checkout_view.dart';
-import '../features/order_success/bindings/order_success_binding.dart';
-import '../features/order_success/view/order_success_view.dart';
 import '../features/track_order/bindings/track_order_binding.dart';
 import '../features/track_order/view/track_order_view.dart';
-import '../features/saved_sizes/bindings/saved_sizes_binding.dart';
-import '../features/saved_sizes/view/saved_sizes_view.dart';
+import '../features/wishlist/bindings/wishlist_binding.dart';
+import '../features/wishlist/view/wishlist_view.dart';
 
 part 'app_routes.dart';
 
@@ -110,6 +119,26 @@ class AppPages {
       name: Routes.savedSizes,
       page: () => const SavedSizesView(),
       binding: SavedSizesBinding(),
+    ),
+    GetPage(
+      name: Routes.orderHistory,
+      page: () => const OrderHistoryView(),
+      binding: OrderHistoryBinding(),
+    ),
+    GetPage(
+      name: Routes.privacySettings,
+      page: () => const PrivacySettingsView(),
+      binding: PrivacySettingsBinding(),
+    ),
+    GetPage(
+      name: Routes.securityPrivacy,
+      page: () => const SecurityPrivacyView(),
+      binding: SecurityPrivacyBinding(),
+    ),
+    GetPage(
+      name: Routes.notification,
+      page: () => const NotificationView(),
+      binding: NotificationBinding(),
     ),
   ];
 }
